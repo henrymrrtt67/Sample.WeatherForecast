@@ -10,6 +10,7 @@ on:
 
 env:
   image-name: ghcr.io/henrymrrtt67/samples.weatherforecast:${{ github.sha }}
+  image-name-unit-tests: unit-tests:latest
 
 jobs:
   build:
@@ -18,11 +19,33 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
+              
+      - name: Unit tests [build]
+        run: docker build --target unit-test -t ${{ env.image-name-unit-tests }} .
+      
+      - name: Unit tests [run]
+        run: docker run --rm -v ${{ github.workspace }}/out/test/testresults:/code/test/Samples.WeatherForecast.Api.UnitTest/TestResults ${{ env.image-name-unit-tests }}
+        
+      - name: Unit tests [results]  
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: unit-test-results
+          path: ${{ github.workspace }}/out/test/testresults/test_results_unit_test.trx
 
-      - name: Build docker image
+      - name: Unit tests [publish]
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Unit tests
+          path: ${{ github.workspace }}/out/test/testresults/test_results_unit_test.trx
+          reporter: dotnet-trx
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: App [Build]
         run: docker build . -t ${{ env.image-name }}
         
-      - name: Scan docker image
+      - name: App [Scan]
         uses: azure/container-scan@v0
         with:
           image-name: ${{ env.image-name }}
@@ -37,5 +60,5 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GH_CR }}
           
-      - name: Push docker image
+      - name: App [Publish]
         run: docker push ${{ env.image-name }}
