@@ -27,4 +27,4 @@ jobs:
           password: ${{ secrets.GH_CR }}
           
       - name: Push docker image
-        run: docker push ${{ env.image-name }}
+        run: docker push ghcr.io/henrymrrtt67/samples.weatherforecast:${{ github.sha }}
