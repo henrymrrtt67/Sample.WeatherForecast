@@ -42,10 +42,10 @@ jobs:
           reporter: dotnet-trx
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build docker image
+      - name: App [Build]
         run: docker build . -t ${{ env.image-name }}
         
-      - name: Scan docker image
+      - name: App [Scan]
         uses: azure/container-scan@v0
         with:
           image-name: ${{ env.image-name }}
@@ -60,5 +60,5 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GH_CR }}
           
-      - name: Push docker image
+      - name: App [Publish]
         run: docker push ${{ env.image-name }}
