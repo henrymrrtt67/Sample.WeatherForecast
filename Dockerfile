@@ -20,6 +20,10 @@ RUN dotnet publish \
 
 # Final stage/image
 FROM mcr.microsoft.com/dotnet/runtime-deps:${VERSION}
+
+RUN addgroup -g 1000 dotnet && \
+    adduser -u 1000 -G dotnet -s /bin/sh -D dotnet
+
 WORKDIR /app
 COPY --from=publish /out .
 
