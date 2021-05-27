@@ -25,4 +25,28 @@ Part 3 includes the usage of yml pipelines in github with github actions to allo
 
 Only one issue came forward with github requiring consent to enable containerisation.
 
+### Part 4
+Part 4 had a small amount of challenge for me, especially whilst using linux alpine, as what during the security scan that is created during this did not pick up any issues, and this is due to the alpine recently solving the issue that was associated, as it required an ignore-check style code inclusion into the pipelines.
+
+The warning given is for ```CVE-2020-28928```, however, any form of CVE is to be worried about as they can range various severities.
+
+However all I had was a warning to include a user for the container, with other smaller, relevant, information that followed.
+
+### Part 5
+Part 5 included a lot around healthchecks and making sure that our API endpoints are healthy and easy to reach, and also including that within our own dockerfile so that we can also check our containers work fine alongside it.
+
+It has included 3 seperate changes, two relevant with our local healthchecks within the url, both of which are made within the startup file, and the final within the dockerfile, which passes through the relevant path for these checks to be used by the docker container.
+
+### Part 6
+Part 6 was by far the most difficult so far, due to the multiplicity of its path's, inside the dockerfile itself, I was having trouble differentiating the two projects, now including a unit testing project. This trouble was found mostly locally, as, unlike the tutorial I was following, the file did not automatically appear within the unit test project, and was having trouble finding these without a solution.
+
+My solution to this problem was as follows:
+- Navigate to File > Preferences > Settings
+- Find your way to the extensions drop down, and from there .NET Core Test Explorer
+- From here find Test Project Path, and use wildcards (*) to navigate to your csproj file.
+
+From here I had included the powershell scripts provided, however  may go one step further and create a run ps1 file and expand upon that.
+
+The continued expansion of the pipeline surrounding the new paths displayed also deemed easy enough, however, I did have issues with the placement of the unit tests placement in the pipeline, as I was more curious to have the application itself build before running the tests, however, that caused errors within the pipeline, as soon as I moved it to before, it worked correctly, allowing me to place the publishing of the unit tests into the pipeline also.
+
 **Am continuing this tomorrow!! Will also edit this to be more in depth, this is my initial tired thoughts!!!**
