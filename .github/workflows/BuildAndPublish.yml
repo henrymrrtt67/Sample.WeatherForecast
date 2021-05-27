@@ -19,6 +19,19 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
+              
+      - name: Unit tests [build]
+        run: docker build --target unit-test -t ${{ env.image-name-unit-tests }} .
+      
+      - name: Unit tests [run]
+        run: docker run --rm -v ${{ github.workspace }}/out/test/testresults:/code/test/Samples.WeatherForecast.Api.UnitTest/TestResults ${{ env.image-name-unit-tests }}
+        
+      - name: Unit tests [results]  
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: unit-test-results
+          path: ${{ github.workspace }}/out/test/testresults/test_results_unit_test.trx
 
       - name: Build docker image
         run: docker build . -t ${{ env.image-name }}
@@ -30,19 +43,6 @@ jobs:
           severity-threshold: MEDIUM
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GH_CR }}
-      
-      - name: Unit tests [build]
-        run: docker build --target unit-test -t ${{ env.image-name-unt-tests }} .
-      
-      - name: Unit tests [run]
-        run: docker run --rm -v ${{ github.workspace }}/out/test/testresults:/code/test/Samples.WeatherForecast.Api.UnitTest/TestResults ${{ env.image-name-unit-tests }}
-        
-      - name: Unit tests [results]  
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: unit-test-results
-          path: ${{ github.workspace }}/out/test/testresults/test_results_unit_test.trx
         
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
