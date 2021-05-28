@@ -52,6 +52,19 @@ The continued expansion of the pipeline surrounding the new paths displayed also
 ### Part 7
 [![codecov](https://codecov.io/gh/henrymrrtt67/Sample.WeatherForecast/branch/main/graph/badge.svg?token=IOU2UJH3Z2)](https://codecov.io/gh/henrymrrtt67/Sample.WeatherForecast)
 
+In part 7 I managed to learn more about code coverage, and more importantly, different ways of presenting it. We have used codecov instead as it has a close ties to github, and has some aesthetically pleasing aspects around the code coverage wheel.
 
+as shown above, I have managed to print it out in the readme, and more importantly that it has the code coverage wheel.
+
+The dockerfile was needed changing as it needed a place to output the code coverage, whilst the yaml file pushed it to the codecov url which allowed for the visuals of the code coverage wheel. I also included the final change for the codecov.yml file which uses a infastructure as code (IaS), and allows me to set targets and thresholds for code coverage.
+
+The code coverage also allows for showing in the readme, which is beneficial on many fronts, which is shown at the top of this parts description of my journey.
+
+### Part 8
+During this part it was taking advantage of the branch policies available on github, as well as increasing the code coverage percentage in both the expected amount, using codecov.yml, and placing it up to 80%, as well as ignoring all code that was impossible/not necessary to test.
+
+The code coverage was taken up to 94%, which was well above the 80% necessary for the code to pass.
+
+Alongside this, we created a ci (continuous integration) for the pull requests alone, which we then set that it must pass whenever a branch wishes to be merged into the main branch, along with being able to set the amount of people needed to review the code before it is merged.
 
 **Am continuing this tomorrow!! Will also edit this to be more in depth, this is my initial tired thoughts!!!**
