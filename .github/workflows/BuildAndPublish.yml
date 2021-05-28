@@ -47,7 +47,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          files: ${{ github.workspace }}/out/test/testresults/coverage.info
+          coverageLocations: ${{ github.workspace }}/out/test/testresults/coverage.info
           prefix: /code/
 
       - name: App [Build]
