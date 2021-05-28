@@ -67,4 +67,11 @@ The code coverage was taken up to 94%, which was well above the 80% necessary fo
 
 Alongside this, we created a ci (continuous integration) for the pull requests alone, which we then set that it must pass whenever a branch wishes to be merged into the main branch, along with being able to set the amount of people needed to review the code before it is merged.
 
+### Part 9
+This part is mostly around static code analysis, and the changing of using codecov to code climate, which allows for more in depth code analysis, and giving visual aids.
+
+Other than this it has just edited the code itself in order to test around, and making sure that correct code was used throughout.
+
+A little bit of an issue arised from the switch, as the code climate wasn't able to find it at the time.
+
 **Am continuing this tomorrow!! Will also edit this to be more in depth, this is my initial tired thoughts!!!**
