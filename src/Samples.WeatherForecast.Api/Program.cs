@@ -4,15 +4,14 @@ using Microsoft.Extensions.Hosting;
 
 namespace Samples.WeatherForecast.Api
 {
+    [ExcludeFromCodeCoverage]
     public class Program
     {
-        [ExcludeFromCodeCoverage]
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
         }
-        
-        [ExcludeFromCodeCoverage]
+
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>

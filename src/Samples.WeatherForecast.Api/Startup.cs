@@ -8,15 +8,14 @@ using Microsoft.OpenApi.Models;
 
 namespace Samples.WeatherForecast.Api
 {
+    [ExcludeFromCodeCoverage]
     public class Startup
     {
-        [ExcludeFromCodeCoverage]
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        [ExcludeFromCodeCoverage]
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -32,7 +31,6 @@ namespace Samples.WeatherForecast.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        [ExcludeFromCodeCoverage]
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
