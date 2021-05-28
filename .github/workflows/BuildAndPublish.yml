@@ -42,11 +42,13 @@ jobs:
           reporter: dotnet-trx
           token: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Code Coverage [codecov]
-        uses: codecov/codecov-action@v1.2.1
+      - name: Code Coverage [Code Climate]
+        uses: paambaati/codeclimate-action@v2.7.5
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          files: ${{ github.workspace }}/out/test/testresults/coverage.info
-          verbose: true
+          coverageLocations: ${{ github.workspace }}/out/test/testresults/coverage.info
+          prefix: /code/
 
       - name: App [Build]
         run: docker build . -t ${{ env.image-name }}
