@@ -50,7 +50,8 @@ From here I had included the powershell scripts provided, however  may go one st
 The continued expansion of the pipeline surrounding the new paths displayed also deemed easy enough, however, I did have issues with the placement of the unit tests placement in the pipeline, as I was more curious to have the application itself build before running the tests, however, that caused errors within the pipeline, as soon as I moved it to before, it worked correctly, allowing me to place the publishing of the unit tests into the pipeline also.
 
 ### Part 7
-[![codecov](https://codecov.io/gh/henrymrrtt67/Samples.WeatherForecast/branch/main/graph/badge.svg?token=KZW5MORPPY)](https://codecov.io/gh/henrymrrtt67/Samples.WeatherForecast)
+[![codecov](https://codecov.io/gh/henrymrrtt67/Sample.WeatherForecast/branch/main/graph/badge.svg?token=IOU2UJH3Z2)](https://codecov.io/gh/henrymrrtt67/Sample.WeatherForecast)
+
 
 
 **Am continuing this tomorrow!! Will also edit this to be more in depth, this is my initial tired thoughts!!!**
