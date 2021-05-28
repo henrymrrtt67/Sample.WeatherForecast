@@ -33,7 +33,7 @@ jobs:
           verbose: true
       
       - name: App [build]
-        run: docker buld -t ${{ env.image-name }}
+        run: docker build -t ${{ env.image-name }}
 
       - name: App [scan]
         uses: azure/container-scan@v0
