@@ -11,7 +11,8 @@ namespace Samples.WeatherForecast.Api
         {
             CreateHostBuilder(args).Build().Run();
         }
-
+        
+        [ExcludeFromCodeCoverage]
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
