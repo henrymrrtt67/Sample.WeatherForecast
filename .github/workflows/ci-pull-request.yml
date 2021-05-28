@@ -1,0 +1,32 @@
+name: CI pull request
+
+on:
+  pull_request:
+    branches: [main]
+
+  workflow_dispatch:
+
+env:
+  image-name-unit-tests: unit-tests:latest
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Unit tests [build]
+        run: docker build --target unit-test -t ${{ env.image-name-unit-tests }} .
+      
+      - name: Unit tests [run]
+        run: docker run --rm -v ${{ github.workspace }}/out/test/testresults:/code/test/Samples.WeatherForecast.Api.UnitTest/TestResults ${{ env.image-name-unit-tests }}
+
+      - name: Code coverage [codecov]
+        uses: codecov/codecov-action@v1.2.1
+        with:
+          files: ${{ github.workspace }}/out/test/testresults/coverage.info
+          verbose: true
