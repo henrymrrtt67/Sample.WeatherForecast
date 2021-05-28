@@ -74,4 +74,13 @@ Other than this it has just edited the code itself in order to test around, and 
 
 A little bit of an issue arised from the switch, as the code climate wasn't able to find it at the time.
 
-**Am continuing this tomorrow!! Will also edit this to be more in depth, this is my initial tired thoughts!!!**
+### Part 10
+Seemed as though this was very simple, all it included was updating security checks and making sure that a valid cron was set.
+
+Security scanning must be set in a yml code itself, and any configuraton should be used as well should be linked to this security scanning code quality check.
+
+A lot of this was theoretical understanding on why we would did certain things and how to implement a simple Dynamic Application Security Testing (DAST) software, including CodeQL's autobuild, as well as final branch protection rules.
+
+DAST can also be used within VS code and Visual Studio itself, allowing for 
+
+**Am continuing this tomorrow!! Most importantly I will be shifting through all my notes and completing a final summary, which will take up this large README, and any additional parts will be continued upon from the overall!!!**
